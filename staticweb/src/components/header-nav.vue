@@ -24,12 +24,11 @@
                 navMenu: [
                     {
                         title: '首页', uri: '/',active:false,
-                        submenu: [{title: '子菜单', uri: '/'}, {title: '子菜单', uri: '/'}, {title: '子菜单', uri: '/'}, {title: '子菜单', uri: '/'}
-                        ]
+                        submenu: []
                     },
                     {
                         title: '页面2', uri: '/',active:false,
-                        submenu: [{title: '子菜单', uri: '/'}, {title: '子菜单', uri: '/'}, {title: '子菜单', uri: '/'}, {title: '子菜单', uri: '/'}
+                        submenu: [ {title: '子菜单', uri: '/'}, {title: '子菜单', uri: '/'}, {title: '子菜单', uri: '/'}
                         ]
                     },
                     {
