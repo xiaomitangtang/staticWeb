@@ -1,8 +1,8 @@
 <template>
   <div class="main">
     <webheader></webheader>
-    <webheadernav></webheadernav>
-    <banner></banner>
+    <!--<webheadernav></webheadernav>-->
+    <!--<banner></banner>-->
     <products></products>
     <copyright></copyright>
   </div>

@@ -1,15 +1,15 @@
 <template>
     <div class='web-container web-header'>
         <div class="web-container-center">
-            <div class="header-l">
+      <!--      <div class="header-l">
                 <img class="header-l-logo-img" src="../assets/logo.png" alt="">
-            </div>
-            <div class="header-c">
-                <div>资源管理解决方案</div>
-            </div>
-            <div class="header-r">
+            </div>-->
+            <!--<div class="header-c">-->
+                <h1>同方赛威讯统一资源</h1>
+            <!--</div>-->
+    <!--        <div class="header-r">
                 <div>联系人：123123</div>
-            </div>
+            </div>-->
         </div>
     </div>
 </template>
@@ -25,6 +25,7 @@
     .web-header{
         .web-container-center{
             height:160px;
+            text-align: center;
         }
         .header-l{
             float: left;

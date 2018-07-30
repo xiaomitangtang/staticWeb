@@ -10,24 +10,21 @@
         data() {
             return {
                 productList:[
-                    {img:'../assets/logo.png',info:"这是一个产品"},
-                    {img:'../assets/logo.png',info:"这是一个产品"},
-                    {img:'../assets/logo.png',info:"这是一个产品"},
-                    {img:'../assets/logo.png',info:"这是一个产品"},
-                    {img:'../assets/logo.png',info:"这是一个产品"},
-                    {img:'../assets/logo.png',info:"这是一个产品"},
-                    {img:'../assets/logo.png',info:"这是一个产品"},
-                    {img:'../assets/logo.png',info:"这是一个产品"},
-                    {img:'../assets/logo.png',info:"这是一个产品"},
-                    {img:'../assets/logo.png',info:"这是一个产品"},
-                    {img:'../assets/logo.png',info:"这是一个产品"},
-                    {img:'../assets/logo.png',info:"这是一个产品"}
+                   /* {img:require('../assets/gogs.png'),info:"Gogs代码仓库",url:"http://192.168.1.253:10080"},
+                    // {img:"/dist/static/img/chandao.png",info:"Gogs代码仓库",url:"http://192.168.1.253:10080"},
+                    {img:"/img/chandao.png",info:"Gogs代码仓库",url:"http://192.168.1.253:10080"},
+                    {img:require('../assets/chandao.png'),info:"禅道项目管理",url:"http://192.168.1.253"}*/
                 ]
             }
         },
         components:{
             proItem:()=>import("./product-item.vue")
-        }
+        },
+        mounted(){
+          this.$http.get("/dist/proList.json").then(res=>{
+              this.productList=res.data.productList
+          })
+        },
     }
 </script>
 <style lang="less">

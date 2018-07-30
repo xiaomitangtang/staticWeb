@@ -1,0 +1,7 @@
+﻿{
+  "productList":[
+    {"img":"/img/gogs.png","info":"Gogs代码仓库","url":"http://192.168.1.253:10080"},
+{"img":"/dist/img/maven.png","info":"Maven仓库","url":"http://192.168.2.23:8081"},
+    {"img":"/img/chandao.png","info":"禅道项目管理","url":"http://192.168.1.253"}
+  ]
+}

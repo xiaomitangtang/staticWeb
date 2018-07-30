@@ -1,7 +1,9 @@
 <template>
     <div class='web-container web-copyright'>
         <div class="web-container-center">
-            <div class="web-copyright-main">版权版权版权版权版权版权版权版权版权版权版权版权版权版权版权版权版权版权</div>
+            <div class="web-copyright-main">
+                本服务由同方赛威讯 基础研发中心 提供
+            </div>
         </div>
     </div>
 </template>

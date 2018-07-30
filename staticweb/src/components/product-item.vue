@@ -1,12 +1,12 @@
 <template>
     <div class='product-item'>
         <div class="product-item-img-box">
-            <img class="product-item-img" src="../assets/logo.png" alt="">
+            <img class="product-item-img" :src="data.img" alt="">
         </div>
         <div class="product-item-info">
-            产品介绍
+           {{data.info}}
         </div>
-        <div class="product-item-mask"></div>
+        <a class="product-item-mask" :href="data.url"></a>
     </div>
 </template>
 <script>
@@ -23,7 +23,7 @@
         position: relative;
         float: left;
         margin-top: 20px;
-        width: 25%;
+        width: 33.33%;
         box-shadow: 0px 0px 2px rgba(0,0,0,.1);
         .product-item-mask{
             position: absolute;
@@ -37,7 +37,7 @@
     }
     .product-item-img-box{
         position: relative;
-        height:280px;
+        height:380px;
         overflow: hidden;
         img{
             width: 80%;
@@ -50,9 +50,11 @@
     }
     .product-item-info{
         text-align: center;
-        height: 70px;
-        line-height:70px;
+        height: 100px;
+        line-height:100px;
         background-color: #fff;
+        font-size: 24px;
+        font-weight: 700;
         box-shadow: 0px -2px 2px rgba(0,0,0,.1) ;
     }
     .product-item:hover{
