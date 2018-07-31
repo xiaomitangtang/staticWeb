@@ -6,7 +6,7 @@
         <div class="product-item-info">
            {{data.info}}
         </div>
-        <a class="product-item-mask" :href="data.url"></a>
+        <div class="product-item-mask"></div>
     </div>
 </template>
 <script>

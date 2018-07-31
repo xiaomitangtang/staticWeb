@@ -1,7 +1,8 @@
 ﻿{
   "productList":[
-    {"img":"/img/gogs.png","info":"Gogs代码仓库","url":"http://192.168.1.253:10080"},
-{"img":"/dist/img/maven.png","info":"Maven仓库","url":"http://192.168.2.23:8081"},
-    {"img":"/img/chandao.png","info":"禅道项目管理","url":"http://192.168.1.253"}
+    {"img":"/img/gogs.png","info":"Gogs代码仓库","url":"http://192.168.1.253:10080","showInfo":""},
+    {"img":"/img/redis.jpg","info":"redis","url":"","showInfo":"spring.redis.host=192.168.1.253\r\nspring.redis.port=6379\r\nspring.redis.password=123456"},
+    {"img":"/img/maven.png","info":"Maven仓库","url":"http://192.168.2.23:8081","showInfo":""},
+    {"img":"/img/chandao.png","info":"禅道项目管理","url":"http://192.168.1.253","showInfo":""}
   ]
 }

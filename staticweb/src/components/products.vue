@@ -1,7 +1,7 @@
 <template>
     <div class='web-container products'>
         <div class="web-container-center">
-            <proItem v-for="(item,index) in productList" :data="item" :key="index"></proItem>
+            <proItem v-for="(item,index) in productList" :data="item" :key="index" @click.native="proClick(item)"></proItem>
         </div>
     </div>
 </template>
@@ -17,12 +17,36 @@
                 ]
             }
         },
+        methods:{
+            proClick(pro){
+               if(pro.url){
+                  location.href=pro.url
+               }else{
+                   this.$notify({
+                       title: '提示信息',
+                       message: pro.showInfo,
+                       duration:10000
+                   });
+               }
+            }
+        },
         components:{
             proItem:()=>import("./product-item.vue")
         },
         mounted(){
-          this.$http.get("/dist/proList.json").then(res=>{
-              this.productList=res.data.productList
+          let  appname=window.appname
+          this.$http.get("/"+appname+"/proList.json").then(res=>{
+              this.productList=res.data.productList.map(item=>{
+                  if(!item.img.startsWith('http://')&&!item.img.startsWith('https://')){
+                      item.img="/"+appname+item.img
+                  }
+                  return item;
+              })
+          },err=>{
+              console.log(err);
+              this.$http.get("/proList.json").then(res=>{
+                  this.productList=res.data.productList
+              })
           })
         },
     }
