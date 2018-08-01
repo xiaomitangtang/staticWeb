@@ -15,6 +15,7 @@
         抽奖区行/列数：<input v-model.number="settingInfo.rows" class="setting-input" type="text">
         总人数：<input v-model.number="settingInfo.totalman" class="setting-input" type="text">
         抽奖时间(ms)：<input v-model.number="settingInfo.playTime" class="setting-input" type="text">
+        interval(ms)：<input v-model.number="settingInfo.playInterval" class="setting-input" type="text">
         抽奖区大小：<input v-model.number="settingInfo.playboxWidth" class="setting-input" type="text">
         螺旋模式：<input v-model="settingInfo.spiralModel" type="checkbox">
         总是从头开始：<input v-model="settingInfo.restart" type="checkbox">
@@ -30,22 +31,16 @@
               validSpiraArr:[],
               awardArr:[],
               activeNumber:-1,
-              rows:18,
-              totalman:310,
-              spiralModel:false,
-              restart:false,
               startIndex:-1,
               needSave:false,
-              settingInfo:{
-                  spiralModel:false,
-                  restart:false,
-                rows:18,
-                playboxWidth:630,
-                totalman:310,
-                playTime:8000,
-              },
+              settingInfo:{spiralModel:false, restart:false, rows:18, playboxWidth:630, totalman:310, playTime:3000, playInterval:10,},
+              spiralModel:false,
+              restart:false,
+              rows:18,
               playboxWidth:630,
-              awardboxSize:630,
+              playInterval:10,
+              totalman:310,
+              playTime:3000,
               awardboxStyle:{
                   width:'630px',
                   height:'630px',
@@ -56,7 +51,6 @@
                   lineHeight:'35px'
               },
               isPlay:false,
-              playTime:8000,
               timer:null
           }
       },
@@ -66,10 +60,12 @@
               let totalman=this.settingInfo.totalman
               let playTime=this.settingInfo.playTime
               let playboxWidth=this.settingInfo.playboxWidth
+              let playInterval=this.settingInfo.playInterval
               if(typeof rows!=='number'){alert('请输入正确的行数/列数');return}
               if(typeof totalman!=='number'){alert('请输入正确的人数');return}
               if(typeof playTime!=='number'){alert('请输入正确的毫秒数');return}
               if(typeof playboxWidth!=='number'){alert('请输入正确宽度/高度');return}
+              if(typeof playInterval!=='number'){alert('请输入正确间隔时间');return}
               if(Math.pow(rows,2)<totalman){alert('区域小了，装不下这么多人');return}
               this.awardoneStyle={
                   width:playboxWidth/rows+'px',
@@ -87,12 +83,14 @@
               this.playboxWidth=playboxWidth;
               this.spiralModel=this.settingInfo.spiralModel;
               this.restart=this.settingInfo.restart;
+              this.playInterval=this.settingInfo.playInterval;
               this.needSave=false;
               this.init()
 
           },
           init(){
               clearInterval(this.timer)
+              this.isPlay=false
               this.SpiralArr=[];
               this.validSpiraArr=[];
               this.activeNumber=-1
@@ -105,7 +103,9 @@
                       this.SpiralArr.push("")
                   }
               })
-              this.validSpiraArr= this.validSpiraArr.sort( (a,b)=>a-b)
+              if(this.spiralModel){
+                  this.validSpiraArr= this.validSpiraArr.sort( (a,b)=>a-b)
+              }
           },
           getSpiralArr(n){
               var map = (function() {
@@ -171,15 +171,15 @@
                       tempFunc=()=> {
                           if (new Date().getTime() - startTime > alltime  || !this.isPlay) {
                               clearInterval(this.timer)
+                              this.startIndex=(tempIndex-1)%validarr.length
                               this.awardArr.push(validarr.splice(validarr.indexOf(this.activeNumber), 1)[0])
-                              this.startIndex=tempIndex-1
                               this.isPlay=false
                           } else {
                               this.activeNumber = validarr[(tempIndex++) % validarr.length]
                           }
                       }
                   }
-              this.timer=setInterval(tempFunc,30)
+              this.timer=setInterval(tempFunc,this.playInterval)
           }
       },
       watch:{
@@ -289,6 +289,7 @@
     .setting-input{
         margin: 10px;
         border-radius: 4px;
+        width: 50px;
         padding: 3px;
         border: 1px solid #cdcdcd;
     }
