@@ -5,7 +5,7 @@
                 <img class="header-l-logo-img" src="../assets/logo.png" alt="">
             </div>-->
             <!--<div class="header-c">-->
-                <h1>同方赛威讯统一资源</h1>
+                <h1>政法事业部通用资源软件</h1>
             <!--</div>-->
     <!--        <div class="header-r">
                 <div>联系人：123123</div>

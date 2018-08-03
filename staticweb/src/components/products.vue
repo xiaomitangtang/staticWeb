@@ -22,11 +22,7 @@
                if(pro.url){
                   location.href=pro.url
                }else{
-                   this.$notify({
-                       title: '提示信息',
-                       message: pro.showInfo,
-                       duration:10000
-                   });
+                   this.$alert(pro.showInfo,pro.infoTitle,{confirmButtonText:'确定',dangerouslyUseHTMLString:true});
                }
             }
         },
